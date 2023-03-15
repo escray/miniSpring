@@ -47,3 +47,4 @@ bin/
 /gradlew.bat
 /.idea/misc.xml
 /.idea/
+/src/main/resources/dom4j-1.6.1.jar
