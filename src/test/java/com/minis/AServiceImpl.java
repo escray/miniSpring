@@ -1,18 +1,28 @@
 package com.minis;
 
 public class AServiceImpl implements AService {
-    private String property1;
+
 
     private String name;
     private int level;
+    private String property1;
+    private String property2;
 
-    public void setProperty1(String property1) {
-        this.property1 = property1;
+    public String getProperty1() {
+        return property1;
+    }
+
+    public String getProperty2() {
+        return property2;
+    }
+
+    public AServiceImpl() {
     }
 
     public AServiceImpl(String name, int level) {
         this.name = name;
         this.level = level;
+        System.out.println(this.name + ", " + this.level);
     }
 
     @Override

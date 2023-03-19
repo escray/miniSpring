@@ -56,4 +56,8 @@ public class ArgumentValues {
     public boolean isEmpty() {
         return this.genericArgumentValues.isEmpty();
     }
+
+    public void addArgumentValue(ArgumentValue argumentValue) {
+        this.genericArgumentValues.add(argumentValue);
+    }
 }
