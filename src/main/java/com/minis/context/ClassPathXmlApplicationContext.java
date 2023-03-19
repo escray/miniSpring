@@ -4,9 +4,6 @@ import com.minis.beans.*;
 import com.minis.core.ClassPathXmlResource;
 import com.minis.core.Resource;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ClassPathXmlApplicationContext implements BeanFactory {
     BeanFactory beanFactory;
 
@@ -14,10 +11,10 @@ public class ClassPathXmlApplicationContext implements BeanFactory {
     // 构造器获取外部配置，解析出 Bean 的定义，形成内存映像
     public ClassPathXmlApplicationContext(String fileName) {
         Resource resource = new ClassPathXmlResource(fileName);
-        BeanFactory beanFactory = new SimpleBeanFactory();
-        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
+        SimpleBeanFactory simpleBeanFactory = new SimpleBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(simpleBeanFactory);
         reader.loadBeanDefinitions(resource);
-        this.beanFactory = beanFactory;
+        this.beanFactory = simpleBeanFactory;
     }
 
     // context 再对外提供一个 getBean，底下就是调用的 BeanFactory 对应的方法
@@ -28,7 +25,17 @@ public class ClassPathXmlApplicationContext implements BeanFactory {
     }
 
     @Override
-    public void registerBeanDefinition(BeanDefinition beanDefinition) {
-        this.beanFactory.registerBeanDefinition(beanDefinition);
+    public Boolean containsBean(String name) {
+        return this.beanFactory.containsBean(name);
+    }
+
+    @Override
+    public void registerBean(BeanDefinition beanDefinition) {
+        this.beanFactory.registerBean(beanDefinition);
+    }
+
+    @Override
+    public void registerBean(String beanName, Object obj) {
+        this.beanFactory.registerBean(beanName, obj);
     }
 }
