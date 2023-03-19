@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans>
     <bean id="aservice" class="com.minis.AServiceImpl">
-
+        <property type="String" name="property1" value="Hello World!"/>
+        <property type="String" name="property2" value="Someone says"/>
+        <constructor-arg type="String" name="name" value="abc"/>
+        <constructor-arg type="int" name="level" value="3"/>
     </bean>
 </beans>

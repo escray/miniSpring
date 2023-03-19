@@ -10,4 +10,10 @@ public interface BeanFactory {
     void registerBean(BeanDefinition beanDefinition);
 
     void registerBean(String beanName, Object obj);
+
+    boolean isSingleton(String name);
+
+    boolean isPrototype(String name);
+
+    Class<?> getType(String name);
 }
